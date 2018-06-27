@@ -43,14 +43,20 @@ hbs.registerHelper('helperScreamIt', text => '*** ' + text.toUpperCase() + ' ***
 
 app.get('/', (req, res) => {
   res.render('home.hbs', {
-    pageTitle: ':LUMOZ: Home Page',
+    pageTitle: ':LUMOZ: | HOME',
     welcomeMessage: 'Welcome to our WebSite'
+  });
+});
+
+app.get('/projects', (req, res) => {
+  res.render('projects.hbs', {
+    pageTitle: ':LUMOZ: | PROJECTS'
   });
 });
 
 app.get('/about', (req, res) => {
   res.render('about.hbs', {
-    pageTitle: ':LUMOZ: About Page'
+    pageTitle: ':LUMOZ: | ABOUT'
   });
 });
 
