@@ -3,6 +3,12 @@ const hbs = require('hbs');
 const fs = require('fs');
 const os = require("os");
 
+// Heroku is going to set the environment variable "process.env.PORT".
+// If running local, then default port to 3000.
+// OBS: The OR operator returns the first value if it’s truthy
+//      and the second value if the first value is falsy
+const port = process.env.PORT || 3000;
+
 var app = express();
 
 app.use((req, res, next) => {
@@ -55,6 +61,6 @@ app.get('/bad', (req, res) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log('Server is up on port 3000');
+app.listen(port, () => {
+  console.log(`Server is up on port ${port}`);
 });
