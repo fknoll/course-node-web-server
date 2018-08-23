@@ -26,25 +26,31 @@ app.use((req, res, next) => {
 });
 
 // app.use((req, res, next) => {
-//   res.render('maintenance.hbs');
+//   res.render('maintenance.hbs', {
+//     pageTitle: ':LUMOZ: | MAINTENANCE'
+//   });
 // });
 
 app.use(express.static(__dirname + '/public'));
 
 app.set('view engine', 'hbs');
+
 hbs.registerPartials(__dirname + '/views/partials');
-hbs.registerHelper('helperGetCurrentYear', () => {
-  return new Date().getFullYear()
-});
+
+hbs.registerHelper('helperGetCurrentYear', () => new Date().getFullYear());
+// hbs.registerHelper('helperGetCurrentYear', () => {
+//   return new Date().getFullYear()
+// });
+
 hbs.registerHelper('helperScreamIt', text => '*** ' + text.toUpperCase() + ' ***');
 // hbs.registerHelper('screamIt', (text) => {
-//   return text.toUpperCase();
+//   return '*** ' + text.toUpperCase() + ' ***';
 // });
 
 app.get('/', (req, res) => {
   res.render('home.hbs', {
     pageTitle: ':LUMOZ: | HOME',
-    welcomeMessage: 'Welcome to our WebSite'
+    welcomeMessage: 'Welcome to our fantastic WebSite'
   });
 });
 
